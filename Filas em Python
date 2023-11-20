@@ -1,0 +1,94 @@
+import time
+
+fila = []
+deletados = []
+
+def menu():
+    print(
+        """MENU:
+1- ADICIONAR NOME NO INÍCIO DA FILA
+2- ADICIONAR NOME NO FINAL DA FILA
+3- EXIBIR PRIMEIRO NOME DA FILA
+4- EXIBIR ÚLTIMO NOME DA FILA
+5- REMOVER PRIMEIRO NOME DA FILA
+6- REMOVER ÚLTIMO NOME DA FILA
+7- EXIBIR FILA
+0- SAIR""")
+    
+def adccmç(fila, nome):
+    fila.insert(0, nome)
+
+def adcfinal(fila, nome):
+    fila.append(nome)
+
+def exibircmç():
+    print(f"{fila[0]} é o primeiro nome da fila")
+
+def exibirfinal():
+    print(f"{fila[-1]} é o último nome da fila")
+
+def removercmç():
+    if not fila:
+        print("A fila está vazia.")
+    else:
+        print(f"{fila[0]} foi removido(a) da fila")   
+    fila.pop(0)
+
+def removerfinal():
+    if not fila:
+        print("A fila está vazia.")
+    else:
+        push()
+        fila.pop()
+        print(f"{deletados} foi removido(a) da fila")
+
+def mostrar():
+    if not fila:
+        print("A fila está vazia.")
+    else:
+        print('Fila: ')
+        for i in fila:
+            print(i)
+
+def push():
+    valor = fila[-1]
+    deletados.append(valor)
+
+
+
+if __name__ == "__main__":
+    while True:
+        time.sleep(2)
+        menu()
+        try:
+            opc = int(input("Digite uma opção: "))
+        except ValueError:
+            print("Opção inválida. Digite um número válido.")
+            continue
+
+        if opc == 1:
+            nome = input("Digite um nome para ser adicionado ao início da fila:")
+            nome1 = nome.capitalize()
+            adccmç(fila, nome1)
+            print(f'{nome1} foi adicionado(a) no início da fila')
+        
+        if opc == 2:
+            nome = input("Digite um nome para ser adicionado ao final da fila:")
+            nome1 = nome.capitalize()
+            adcfinal(fila, nome1)
+            print(f'{nome1} foi adicionado(a) no final da fila')
+
+        if opc == 3: 
+            exibircmç()
+
+        if opc == 4:
+            exibirfinal()
+
+        if opc == 5:
+            removercmç()
+        
+        if opc == 6:
+            removerfinal()
+
+        if opc == 7:
+            mostrar()
