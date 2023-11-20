@@ -1,0 +1,60 @@
+import os
+
+listapessoas = []
+
+while True:
+    pessoa = []
+    pessoa.append(input("Digite seu Nome: "))
+    pessoa.append(float(input("Digite seu peso: ").replace(",", "."))) 
+    pessoa.append(float(input("Digite sua altura: ").replace(",", ".")))
+    listapessoas.append(pessoa)
+    outra = input("\nAdicionar outra pessoa? (S/N): ").upper().strip()
+
+    if outra ==  "N":
+        break
+    
+    elif outra != "S":
+        print("Opção inválida. Saindo do programa...")
+        exit()
+        
+print()
+
+while True:
+    print("Pessoas no banco de dados:")
+    print(f"{'-'*34}")
+    print(f"|  {'Número':^6} | {'Nome':^20} |")
+    print(f"{'-'*34}")
+    contador = 0
+    for pessoas in listapessoas:
+        contador += 1
+        
+        print(f"| # {contador:^5} | {pessoas[0]:^20} |")
+    print(f"{'-'*34}")
+
+    print("\nescolha uma pessoa pelo seu número, ou digite 'lista' para exibir o IMC de todos na lista.")
+    i = input("=> ").strip().upper()
+
+    if i == "LISTA":
+        print(f"{'-'*30}")
+        print(f"| {'Nome':^15} | {'IMC':^8} |")
+        print(f"{'-'*30}")
+        for pessoas in listapessoas:
+            imc = pessoas[1] / (pessoas[2]**2)
+            print(f"| {pessoas[0]:^15} | {imc:^8.2f} |")
+        print(f"{'-'*30}")
+        break
+
+    elif i.isnumeric() == True:
+        i = int(i) - 1
+        imc = listapessoas[i][1] / (listapessoas[i][2]**2)
+        print(f"{'-'*30}")
+        print(f"| {'Nome':^15} | {'IMC':^8} |")
+        print(f"{'-'*30}")
+        print(f"| {listapessoas[i][0]:^15} | {imc:^8.2f} |")
+        print(f"{'-'*30}")
+        break
+        
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("Opção inválida. tente outra novamente.\n")
+        continue
