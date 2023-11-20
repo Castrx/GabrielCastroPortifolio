@@ -1,0 +1,33 @@
+import requests
+
+requisição = requests.get("https://economia.awesomeapi.com.br/json/last/USD-BRL")
+
+dic_requisição = requisição.json()
+
+
+dolar = dic_requisição["USDBRL"]["bid"]
+
+while True:
+    print("="*40)
+    print('CONVERSOR DE MOEDAS'.center(40))
+    print("="*40)
+    print('ESCOLHA UMA OPÇÃO\n'.center(40))
+    print('[1] CONVERTER REAL PARA DÓLAR')
+    print('[2] CONVERTER DÓLAR PARA REAL')
+    print('[0] SAIR')
+    print('='*40)
+    menu = int(input())
+    dolar = 5.42
+    if menu == 1:
+        pergunta = float(input("QUAL VALOR VOCÊ DESEJA CONVERTER?: R$"))
+        real_dolar = pergunta/dolar 
+        print(f"\033[0;30;44m\nO VALOR DA CONVERSÃO DE REAL PARA DÓLAR É: ${real_dolar:.2f}\033[m")
+    elif menu == 2:
+        pergunta2 = float(input("QUAL VALOR VOCÊ DESEJA CONVERTER?: $"))
+        dolar_real = pergunta2*dolar
+        print(f"\033[0;30;44m\nO VALOR DA CONVERSÃO DE DÓLAR PARA REAL É: R${dolar_real:.2f}\033[m")
+    elif menu == 0:
+        print("PROGRAMA FINALIZADO")
+        break
+    else:
+        print(f"\033[0;30;41m\nCÓDIGO INVÁLIDO\033[m")
