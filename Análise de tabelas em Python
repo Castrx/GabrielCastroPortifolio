@@ -1,0 +1,17 @@
+import numpy
+import openpyxl
+import pandas as pd
+import time
+import selenium 
+import pyautogui
+import matplotlib.pyplot as plt 
+import plotly
+import seaborn as sns
+
+
+
+tabela = pd.read_csv("advertising.csv") 
+print(tabela)
+print(tabela.info())
+print(tabela.corr())
+
