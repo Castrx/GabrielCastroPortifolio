@@ -1,0 +1,28 @@
+import pyautogui
+import os
+import pandas 
+import time
+pyautogui.press('win') 
+time.sleep(1)
+pyautogui.click(x=289, y=98)
+pyautogui.write("chrome")
+time.sleep(1)
+pyautogui.press('Enter')
+time.sleep(2)
+x, y = pyautogui.position()
+time.sleep(3)
+print(pyautogui.position())
+pyautogui.click(x=505, y=410)
+time.sleep(2)
+pyautogui.hotkey('ctrl', 't')
+pyautogui.hotkey('win', 'up')
+pyautogui.position()
+print(pyautogui.position())
+time.sleep(3)
+pyautogui.click(x=754, y=480)
+time.sleep(6)
+pyautogui.click(x=188, y=155)
+pyautogui.write('pai')
+pyautogui.press('Enter')
+pyautogui.write('olá pai')
+pyautogui.press('Enter')
